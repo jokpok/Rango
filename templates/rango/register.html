@@ -1,0 +1,36 @@
+{% extends 'rango/base.html' %}
+{% block body_block %}
+<div class="col-xs-12 col-sm-9">
+<div class="jumbotron">
+    
+    
+    <h1>Register with Rango</h1>
+        {% if registered %}
+        <p>Thank you for registering.</p>
+
+        <a href="{% url 'login' %}">Login</a> when you are ready to rango.
+        {% else %}
+        <form id="user_form" method="post" action="{% url 'register' %}"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Sign up Here</h2>
+            
+            {% for field in user_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {% endfor %}
+
+            {% for field in profile_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Register"/>
+        </form>
+    {% endif %}
+    
+</div>>
+</div>>
+{% endblock %}

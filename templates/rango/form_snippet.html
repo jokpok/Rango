@@ -1,0 +1,6 @@
+{% for field in form_comment.visible_fields %}
+<div class="fieldWrapper">
+    {{field.errors}}
+    {{field.label_tag}} {{field}} {{field.css_classes}} 
+</div>
+{% endfor %}

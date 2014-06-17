@@ -1,0 +1,28 @@
+{% extends 'rango/base.html' %}
+{% block body_block %}
+<div class="col-xs-12 col-sm-9">
+<div class="jumbotron">
+    
+    <h2>Add a Category</h2>
+    <br/>
+    
+        <form id="category_form" method="post" action="{% url 'add_category' %}">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+        <div class="input-group input-group-sm">
+            {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br/>
+            {{ field }}
+            {% endfor %}
+        </div>
+            <br/>
+            <input type="submit" name="submit" value="add"/>
+        </form>
+    
+</div>
+</div>              
+{% endblock %}
+
